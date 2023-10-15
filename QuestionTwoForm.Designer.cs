@@ -79,7 +79,7 @@
             // arrayLengthLabel
             // 
             this.arrayLengthLabel.AutoSize = true;
-            this.arrayLengthLabel.Location = new System.Drawing.Point(135, 99);
+            this.arrayLengthLabel.Location = new System.Drawing.Point(139, 99);
             this.arrayLengthLabel.Name = "arrayLengthLabel";
             this.arrayLengthLabel.Size = new System.Drawing.Size(13, 13);
             this.arrayLengthLabel.TabIndex = 4;

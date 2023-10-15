@@ -10,19 +10,20 @@ using System.Windows.Forms;
 
 namespace ClassAssignment
 {
-    public partial class QuestionTwoForm : Form
+    public partial class QuestionThreeForm : Form
     {
         List<int> numbers = new List<int>();
 
-        int sumOfNumbers(List<int> numbers) {
-            int sum = 0;
-            
+        int productOfNumbers(List<int> numbers)
+        {
+            int product = 1;
+
             for (int index = 0; index < numbers.Count; index++)
             {
-               sum += numbers[index];
+                product *= numbers[index];
             }
-            
-            return sum;
+
+            return product;
         }
 
         bool isNumber(String input)
@@ -31,18 +32,30 @@ namespace ClassAssignment
 
             bool isNumber = false;
 
-            if (int.TryParse(input, out number)) {
-               isNumber =true;
+            if (int.TryParse(inputArea.Text, out number))
+            {
+                isNumber = true;
             }
 
             return isNumber;
         }
-        public QuestionTwoForm()
+
+        bool isNotZero(String input)
+        {
+            bool isNotZero = true;
+            if (input =="0")
+            {
+                isNotZero =false;
+            }
+            return isNotZero ;
+        }
+
+        public QuestionThreeForm()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void QuestionThreeForm_Load(object sender, EventArgs e)
         {
 
         }
@@ -52,30 +65,38 @@ namespace ClassAssignment
             //Count how many Numbers are in the List
             arrayLengthLabel.Text = numbers.Count.ToString();
 
-            switch (NextButton.Text) {
+            switch (NextButton.Text)
+            {
                 case "Next":
-                    if (inputArea.Text != "" && isNumber(inputArea.Text))
+                    if (!isNotZero(inputArea.Text))
+                    {
+                        inputArea.Text = "";
+                        //Show Error "Please Input a number" if user doesn't enter number
+                        MessageBox.Show("Please Enter A Number besides 0 (Zero)", "Zero Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else if (inputArea.Text != "" && isNumber(inputArea.Text))
                     {
                         numbers.Add(int.Parse(inputArea.Text));
                         inputArea.Text = "";
                         // Update the label
                         arrayLengthLabel.Text = numbers.Count.ToString();
 
-                        // Next Button should only allow 10 inputs and then it should show the answer
-                        if (numbers.Count == 10)
+                        // Next Button should only allow 6 inputs and then it should show the answer
+                        if (numbers.Count == 6)
                         {
                             NextButton.Text = "Answer";
                         }
                     }
+                    
                     else
                     {
-                      //Show Error "Please Input a number" if user doesn't enter number
-                      MessageBox.Show("Please Enter A Number", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        //Show Error "Please Input a number" if user doesn't enter number
+                        MessageBox.Show("Please Enter A Number", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     break;
                 case "Answer":
                     // Eg. total.Text == "100";
-                    total.Text = "Sum: " + sumOfNumbers(numbers).ToString();
+                    total.Text = "Product: " + productOfNumbers(numbers).ToString();
                     NextButton.Text = "Done";
                     break;
                 case "Done":

@@ -30,5 +30,12 @@ namespace ClassAssignment
 
             newForm.ShowDialog();
         }
+
+        private void Menu_Load(object sender, EventArgs e)
+        {
+            QuestionThreeForm newForm = new QuestionThreeForm();
+
+            newForm.ShowDialog();
+        }
     }
 }

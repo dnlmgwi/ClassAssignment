@@ -60,6 +60,12 @@
     <Compile Include="QuestionOneForm.Designer.cs">
       <DependentUpon>QuestionOneForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="QuestionThreeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuestionThreeForm.Designer.cs">
+      <DependentUpon>QuestionThreeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="QuestionTwoForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +86,9 @@
     </Compile>
     <EmbeddedResource Include="QuestionOneForm.resx">
       <DependentUpon>QuestionOneForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuestionThreeForm.resx">
+      <DependentUpon>QuestionThreeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuestionTwoForm.resx">
       <DependentUpon>QuestionTwoForm.cs</DependentUpon>
