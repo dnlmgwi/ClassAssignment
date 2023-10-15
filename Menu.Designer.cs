@@ -52,6 +52,7 @@
             this.questionTwoButton.TabIndex = 1;
             this.questionTwoButton.Text = "Question 2";
             this.questionTwoButton.UseVisualStyleBackColor = true;
+            this.questionTwoButton.Click += new System.EventHandler(this.questionTwoButton_Click);
             // 
             // Menu
             // 

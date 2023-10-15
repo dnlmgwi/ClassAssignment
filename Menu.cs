@@ -23,5 +23,12 @@ namespace ClassAssignment
 
             newForm.ShowDialog();
         }
+
+        private void questionTwoButton_Click(object sender, EventArgs e)
+        {
+            QuestionTwoForm newForm = new QuestionTwoForm();
+
+            newForm.ShowDialog();
+        }
     }
 }

@@ -60,6 +60,12 @@
     <Compile Include="QuestionOneForm.Designer.cs">
       <DependentUpon>QuestionOneForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="QuestionTwoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuestionTwoForm.Designer.cs">
+      <DependentUpon>QuestionTwoForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
@@ -74,6 +80,9 @@
     </Compile>
     <EmbeddedResource Include="QuestionOneForm.resx">
       <DependentUpon>QuestionOneForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuestionTwoForm.resx">
+      <DependentUpon>QuestionTwoForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
