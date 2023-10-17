@@ -17,6 +17,10 @@ namespace ClassAssignment
             InitializeComponent();
         }
 
+        private void Menu_Load(object sender, EventArgs e)
+        {
+        }
+
         private void questionOneButton_Click(object sender, EventArgs e)
         {
             QuestionOneForm newForm = new QuestionOneForm();
@@ -31,7 +35,7 @@ namespace ClassAssignment
             newForm.ShowDialog();
         }
 
-        private void Menu_Load(object sender, EventArgs e)
+        private void questionThreeButton_Click(object sender, EventArgs e)
         {
             QuestionThreeForm newForm = new QuestionThreeForm();
 

@@ -65,6 +65,7 @@
             this.questionThreeButton.TabIndex = 2;
             this.questionThreeButton.Text = "Question 3";
             this.questionThreeButton.UseVisualStyleBackColor = true;
+            this.questionThreeButton.Click += new System.EventHandler(this.questionThreeButton_Click);
             // 
             // questionFourButton
             // 

@@ -15,19 +15,19 @@ namespace ClassAssignment
         //List<String> calculationParts;
         string temp = "";
 
-        bool isNumberTest(char value)
+        bool isNumber(String value)
         {
             return int.TryParse(value.ToString(), out int result);
         }
 
-        string combineNumbers(char currentValue, char previousValue, string temp)
+        string combineNumbers(string currentValue, string previousValue, string temp)
         {
             //Console.WriteLine("Current " + currentValue + " Prev " + previousValue);
 
             // if Prev is a number combine Prev + Current
             
             // Eg. PrevCurrent
-            if (isNumberTest(previousValue) && isNumberTest(currentValue))
+            if (isNumber(previousValue) && isNumber(currentValue))
             {
                 return previousValue.ToString() + temp;
             }
@@ -43,27 +43,279 @@ namespace ClassAssignment
         private void CalculateButton_Click(object sender, EventArgs e)
         {
             List<String> calculation = new List<string>();
-           //Break down the equation into parts
-           char[] inputParts = inputArea.Text.ToCharArray();
+           
+            //Break down the equation into parts
+            calculation = inputArea.Text.Split(' ').ToList();
 
-            // Create a new list out of the parts separating the operators from the numbers but keeping the order
-            //if Previous item was a number combine it with the next char
+            // loop through the list
 
-            Console.WriteLine(inputParts.ToString());
 
-            for (int i = 0; i < inputParts.Length; i++)
+            for (int item = 0; item < calculation.Count; item++)
             {
-                char currentValue;
-                char previousValue;
                 
+                if (item > 0)
+                    {
+                        string currentValue = calculation[item];
+                        string previousValue = calculation[item - 1];
+
+
+                        if (isNumber(currentValue) && isNumber(previousValue) && temp == "")
+                        {
+                            if (temp == "")
+                            {
+                                temp = previousValue.ToString() + currentValue.ToString();
+                                Console.WriteLine("Temp" + temp);
+                            }
+
+                            else if (temp != "")
+                            {
+
+                                calculation.Add(currentValue.ToString());
+
+                                Console.WriteLine("Added" + currentValue.ToString());
+
+                            }
+
+                        }
+                        else if (isNumber(currentValue) && isNumber(previousValue) && temp != "")
+                        {
+                            temp += currentValue.ToString();
+                            Console.WriteLine("Temp" + temp);
+
+                        }
+                        else if (isNumber(currentValue) && !isNumber(previousValue) && temp != "")
+                        {
+                            temp += currentValue.ToString();
+                            Console.WriteLine("Temp" + temp);
+
+                        }
+                        else if (isNumber(currentValue) && !isNumber(previousValue) && temp == "")
+                        {
+                            if (temp == "")
+                            {
+                                temp += currentValue.ToString();
+                                Console.WriteLine("Temp" + temp);
+                            }
+
+                            else if (temp != "")
+                            {
+
+                                calculation.Add(currentValue.ToString());
+
+                                Console.WriteLine("Added" + currentValue.ToString());
+
+                            }
+                        }
+                        else if (!isNumber(currentValue) && isNumber(previousValue) && temp == "")
+                        {
+                            if (temp == "")
+                            {
+                                temp = previousValue.ToString() + currentValue.ToString();
+                            }
+                            else if (temp != "")
+                            {
+                                calculation.Add(temp);
+                                calculation.Add(currentValue.ToString());
+
+                                Console.WriteLine("Added" + temp);
+
+                                temp = "";
+                            }
+
+
+                        }
+                        else if (!isNumber(currentValue) && isNumber(previousValue) && temp != "")
+                        {
+
+                            calculation.Add(temp);
+                            calculation.Add(currentValue.ToString());
+
+                            Console.WriteLine("Added" + temp);
+
+                            temp = "";
+
+
+                            if (temp != "")
+                            {
+
+                                calculation.Add(currentValue.ToString());
+
+                                Console.WriteLine("Added" + currentValue.ToString());
+
+                            }
+
+                        }
+                        else if (!isNumber(currentValue) && !isNumber(previousValue) && temp != "")
+                        {
+
+                            temp += currentValue.ToString();
+
+
+                            Console.WriteLine("Temp" + temp);
+
+
+
+
+                        }
+                        else if (isNumber(currentValue) && isNumber(previousValue) && temp != "")
+                        {
+                            temp += currentValue.ToString();
+                            Console.WriteLine("Temp" + temp);
+                        }
+                        else if (isNumber(currentValue) && !isNumber(previousValue) && temp == "")
+                        {
+                            if (temp == "")
+                            {
+                                temp += currentValue.ToString();
+                                Console.WriteLine("Temp" + temp);
+
+                            }
+                            else if (temp != "")
+                            {
+
+                                calculation.Add(currentValue.ToString());
+
+                                Console.WriteLine("Added" + currentValue.ToString());
+
+                            }
+                        }
+                        else if (!isNumber(currentValue) && !isNumber(previousValue) && temp == "")
+                        {
+                            if (temp == "")
+                            {
+                                temp += currentValue.ToString();
+
+                                Console.WriteLine("Temp" + temp);
+
+                            }
+                            if (temp != "")
+                            {
+
+                                calculation.Add(currentValue.ToString());
+
+                                Console.WriteLine("Added" + currentValue.ToString());
+
+                            }
+                        }
+                        else if (isNumber(currentValue) && !isNumber(previousValue) && temp == "")
+                        {
+                            if (temp == "")
+                            {
+                                calculation.Add(temp);
+                                calculation.Add(currentValue.ToString());
+
+                                Console.WriteLine("Added" + temp);
+
+                                temp = "";
+
+
+                                Console.WriteLine("Temp" + temp);
+                            }
+                            else
+                             if (temp != "")
+                            {
+
+                                calculation.Add(currentValue.ToString());
+
+                                Console.WriteLine("Added" + currentValue.ToString());
+
+                            }
+                        }
+                        
+                    }
+                
+                //I need to identify each arithmatic symbols
+                switch (calculation[item])
+                {
+                    //B – Brackets
+                    //I – Order of powers or roots
+                    //D – Division
+                    //M – Multiplication
+                    //A – Addition
+                    //S – Subtraction
+                    case "(":
+
+                    break;
+
+                    case "^":
+
+                        break;
+                    case "/":
+                        
+                        break;
+                    case "*":
+
+                        break;
+                    case "+":
+
+                        break;
+                    case "-":
+
+                        break;
+                }
+            }
+
+            
+            
+
+            /*
+            Console.WriteLine("Parts: "+calculationParts.Length);
+
+            for (int i = 0; i < calculationParts.Length; i++)
+            {
                 if (i > 0)
                 {
-                    currentValue = inputParts[i];
-                    previousValue = inputParts[i - 1];
-                    
+                    char currentValue = calculationParts[i];
+                    char previousValue = calculationParts[i - 1];
 
-                    //If current is a number add it to temp
-                    if (isNumberTest(currentValue) && isNumberTest(previousValue))
+
+                    if (isNumber(currentValue) && isNumber(previousValue) && temp == "")
+                    {
+                        if (temp == "")
+                        {
+                            temp = previousValue.ToString() + currentValue.ToString();
+                            Console.WriteLine("Temp" + temp);
+                        }
+
+                        else if (temp != "")
+                        {
+
+                            calculation.Add(currentValue.ToString());
+
+                            Console.WriteLine("Added" + currentValue.ToString());
+
+                        }
+
+                    }
+                    else if (isNumber(currentValue) && isNumber(previousValue) && temp != "")
+                    {
+                        temp += currentValue.ToString();
+                        Console.WriteLine("Temp" + temp);
+
+                    }
+                    else if (isNumber(currentValue) && !isNumber(previousValue) && temp != "")
+                    {
+                        temp += currentValue.ToString();
+                        Console.WriteLine("Temp" + temp);
+
+                    }
+                    else if (isNumber(currentValue) && !isNumber(previousValue) && temp == "")
+                    {
+                        if (temp =="") {
+                            temp += currentValue.ToString();
+                            Console.WriteLine("Temp" + temp);
+                        }
+                        
+                        else if (temp != "")
+                        {
+
+                            calculation.Add(currentValue.ToString());
+
+                            Console.WriteLine("Added" + currentValue.ToString());
+
+                        }
+                    }
+                    else if (!isNumber(currentValue) && isNumber(previousValue) && temp == "")
                     {
                         if (temp == "")
                         {
@@ -71,69 +323,128 @@ namespace ClassAssignment
                         }
                         else if (temp != "")
                         {
-                            temp += currentValue.ToString();
+                            calculation.Add(temp);
+                            calculation.Add(currentValue.ToString());
+
+                            Console.WriteLine("Added" + temp);
+
+                            temp = "";
                         }
 
-                    } else if (!isNumberTest(currentValue))
-                    {
-                        calculation.Add(temp);
-                        calculation.Add(currentValue.ToString());
 
-                        temp = "";
-                    } else if (!isNumberTest(previousValue))
-                    {
-                        calculation.Add(currentValue.ToString());
-                        temp = "";
                     }
-
-                    
-
-                    /*else if (isNumberTest(currentValue))
+                    else if (!isNumber(currentValue) && isNumber(previousValue) && temp != "")
                     {
-                        temp += currentValue;
-                    } else if(!isNumberTest(currentValue)) {
                         
+                            calculation.Add(temp);
+                            calculation.Add(currentValue.ToString());
+
+                            Console.WriteLine("Added" + temp);
+
+                            temp = "";
+
+
+                         if (temp != "")
+                        {
+
+                            calculation.Add(currentValue.ToString());
+
+                            Console.WriteLine("Added" + currentValue.ToString());
+
+                        }
+
                     }
-                    */
-
-                    Console.WriteLine("Temp"+temp);
-                }
-                /*else
-                {
-                    currentValue = inputParts[i];
-
-                    if ( isNumberTest(currentValue))
+                    else if (!isNumber(currentValue) && !isNumber(previousValue) && temp != "")
                     {
-                        //Console.WriteLine("Current " + currentValue);
-                        calculation.Add(currentValue.ToString());
+
+                        temp += currentValue.ToString();
+
+
+                        Console.WriteLine("Temp" + temp);
+
+
+
+
                     }
+                    else if (isNumber(currentValue) && isNumber(previousValue) && temp != "")
+                    {
+                        temp += currentValue.ToString();
+                        Console.WriteLine("Temp" + temp);
+                    }
+                    else if (isNumber(currentValue) && !isNumber(previousValue) && temp == "")
+                    {
+                        if (temp =="") {
+                            temp += currentValue.ToString();
+                            Console.WriteLine("Temp" + temp);
 
+                        }
+                        else if (temp != "")
+                        {
+
+                            calculation.Add(currentValue.ToString());
+
+                            Console.WriteLine("Added" + currentValue.ToString());
+
+                        }
+                    }
+                    else if (!isNumber(currentValue) && !isNumber(previousValue) && temp == "")
+                    {
+                        if (temp == "") {
+                            temp += currentValue.ToString();
+
+                            Console.WriteLine("Temp" + temp);
+
+                        }
+                        if (temp != "")
+                        {
+
+                            calculation.Add(currentValue.ToString());
+
+                            Console.WriteLine("Added" + currentValue.ToString());
+
+                        }
+                    }
+                    else if (isNumber(currentValue) && !isNumber(previousValue) && temp == "")
+                    {
+                        if (temp =="")
+                        {
+                            calculation.Add(temp);
+                            calculation.Add(currentValue.ToString());
+
+                            Console.WriteLine("Added" + temp);
+
+                            temp = "";
+
+
+                            Console.WriteLine("Temp" + temp);
+                        }
+                          else
+                         if (temp != "")
+                        {
+
+                            calculation.Add(currentValue.ToString());
+
+                            Console.WriteLine("Added" + currentValue.ToString());
+
+                        }
+                    }
+                    else if (temp != "")
+                    {
+
+                        calculation.Add(currentValue.ToString());
+
+                        Console.WriteLine("Added" + currentValue.ToString());
+
+                    }
                 }
-                */
-                
             }
 
-            foreach (var item in calculation)
-            {
-                
-                Console.WriteLine(item.ToString());
-            }
-
-            //I need to identify each athematic symbols
-
-            /*
-            switch (inputParts)
-            {
-                case "":
-            }
             */
-
-
         }
 
         private void QuestionFourForm_Load(object sender, EventArgs e)
         {
-            inputArea.Text = "254+-40*256/5";
+            inputArea.Text = "( 59 - 15 ) % 27";
         }
     }
 }
