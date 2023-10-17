@@ -31,6 +31,7 @@
             this.questionOneButton = new System.Windows.Forms.Button();
             this.questionTwoButton = new System.Windows.Forms.Button();
             this.questionThreeButton = new System.Windows.Forms.Button();
+            this.questionFourButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // questionOneButton
@@ -58,18 +59,30 @@
             // questionThreeButton
             // 
             this.questionThreeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.questionThreeButton.Location = new System.Drawing.Point(56, 188);
+            this.questionThreeButton.Location = new System.Drawing.Point(56, 186);
             this.questionThreeButton.Name = "questionThreeButton";
             this.questionThreeButton.Size = new System.Drawing.Size(214, 23);
             this.questionThreeButton.TabIndex = 2;
             this.questionThreeButton.Text = "Question 3";
             this.questionThreeButton.UseVisualStyleBackColor = true;
             // 
+            // questionFourButton
+            // 
+            this.questionFourButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.questionFourButton.Location = new System.Drawing.Point(56, 229);
+            this.questionFourButton.Name = "questionFourButton";
+            this.questionFourButton.Size = new System.Drawing.Size(214, 23);
+            this.questionFourButton.TabIndex = 3;
+            this.questionFourButton.Text = "Question 4";
+            this.questionFourButton.UseVisualStyleBackColor = true;
+            this.questionFourButton.Click += new System.EventHandler(this.questionFourButton_Click);
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(327, 450);
+            this.Controls.Add(this.questionFourButton);
             this.Controls.Add(this.questionThreeButton);
             this.Controls.Add(this.questionTwoButton);
             this.Controls.Add(this.questionOneButton);
@@ -85,5 +98,6 @@
         private System.Windows.Forms.Button questionOneButton;
         private System.Windows.Forms.Button questionTwoButton;
         private System.Windows.Forms.Button questionThreeButton;
+        private System.Windows.Forms.Button questionFourButton;
     }
 }
